@@ -47,7 +47,7 @@ Constraints:
 public class NumberofDiceRollsWithTargetSum1155 {
     public static int numRollsToTarget(int d, int f, int target) {
     	
-        return 0;
+        return 1;
     }
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
