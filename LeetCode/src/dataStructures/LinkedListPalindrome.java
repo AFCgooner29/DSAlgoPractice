@@ -14,7 +14,7 @@ Follow up:
 Could you do it in O(n) time and O(1) space?
  */
 public class LinkedListPalindrome {
-	public class ListNode {
+	public static class ListNode {
 		      int val;
 		      ListNode next;
 		      ListNode() {}
@@ -24,14 +24,49 @@ public class LinkedListPalindrome {
 	/*
 	 * Plan is to reverse the first half of the linked list then compare with the second half of the list
 	 */
-	public boolean isPalindrome(ListNode head) {
+	public static boolean isPalindrome(ListNode head) {
         ListNode slow = head;
         ListNode fast = head;
+        while(fast!=null && fast.next!=null) {
+        	fast = fast.next.next;
+        	slow = slow.next;
+        	//we need to reverse the list where slow is traversing
+        }
+        if(fast!=null) {
+        	//there are odd no of rows
+        	slow = slow.next;
+        }
+        fast = head;
+        slow = reverse(slow);
+        while(slow!=null) {
+        	if(slow.val!=fast.val) {
+        		slow =null;
+        		fast = null;
+        		return false;
+        	}
+        	slow = slow.next;
+        	fast = fast.next;
+        }
+        slow =null;
+		fast = null;
+        return true;
         
     }
+	public static ListNode reverse(ListNode head) {
+	    ListNode prev = null;
+	    while (head != null) {
+	        ListNode next = head.next;
+	        head.next = prev;
+	        prev = head;
+	        head = next;
+	    }
+	    return prev;
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		ListNode head = new ListNode(1);
+		//head.next = new ListNode();
+		System.out.println(isPalindrome(head));
 	}
 
 }
