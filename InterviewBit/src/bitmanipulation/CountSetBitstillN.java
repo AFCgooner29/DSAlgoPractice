@@ -25,7 +25,11 @@ public class CountSetBitstillN {
 			int tot = A/powerOf2;
 			count+= (tot/2) * powerOf2;
 			powerOf2 = powerOf2<<1;
+			//count += (tot % 2 == 1) ?  
+                    //(n % powerOf2) : 0; 
+                    
 		}
+		
 		return count;
     }
 	public static void main(String[] args) {
